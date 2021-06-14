@@ -1,0 +1,14 @@
+# packages in environment at D:\IDE\Anaconda\envs\ProjectNLP:
+#
+# Name                    Version                   Build  Channel
+flask                     2.0.1              pyhd8ed1ab_0    conda-forge
+flask-socketio            5.1.0              pyhd8ed1ab_0    conda-forge
+gensim                    4.0.1            py37hd77b12b_0  
+matplotlib                3.4.2            py37h03978a9_0    conda-forge
+nltk                      3.6.2              pyhd8ed1ab_0    conda-forge
+numpy                     1.20.3           py37hcbcd69c_0    conda-forge
+pytorch                   1.6.0           cpu_py37h538a6d7_0  
+scikit-learn              0.24.2           py37h8ded0a9_0    conda-forge
+scipy                     1.6.2            py37h14eb087_0  
+spacy                     3.0.6            py37h0a3528d_0    conda-forge
+spyder                    5.0.4            py37h03978a9_0    conda-forge
