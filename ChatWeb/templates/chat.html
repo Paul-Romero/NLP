@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telemática Chat Room</title>
+    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/styles.css')}}">
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="m-2">Wanchi Telechat 🥴</h1>
+    </div>
+    <section class="container-chatroom">
+        <div class="container-chat">
+            <div class="chat-window">
+                <div id="output"></div>
+                <div id="status"></div>
+            </div>
+            <form class="row g-3">
+                    <div class="col-10">
+                        <input type="text" class="form-control" name="message" placeholder="Escriba un mensaje...">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success mb-3">Enviar</button>
+                    </div>
+            </form>
+        </div>
+        <div class="container-guide">
+            <div class="list-groom">
+                <strong>Groomer</strong>
+                <ul>
+                    <li>Text</li>
+                    <li>Text</li>
+                    <li>Text</li>
+                    <li>Text</li>
+                    <li>Text</li>
+                </ul>
+            </div>
+            <div class="list-nogroom">
+                <strong>No Groomer</strong>
+                <ul>
+                    <li>Text</li>
+                    <li>Text</li>
+                    <li>Text</li>
+                    <li>Text</li>
+                    <li>Text</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- SOCKETIO
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js" integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const socket = io.connect('http://127.0.0.1:5000');
+        socket.on('connect', function () {
+            socket.emit('message',{
+                username: "{{username}}"
+            });
+        })
+    </script-->
+</body>
+</html>

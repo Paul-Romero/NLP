@@ -1,0 +1,78 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background: #A1FFCE;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    min-height: 100vh;
+}
+.container-chatroom {
+    display: flex;
+    align-items: center;
+    margin: 5px 5px;
+    padding: 10px 5px;
+}
+    .container-chat {
+        flex: 2 1 75%;
+    }
+        .chat-window {
+            padding: 14px 0;
+            margin: 0 20px;
+            border-bottom: 1px solid gainsboro;
+            color: black;
+        }
+            #output p {
+                color: black;
+                padding: 14px 0;
+                margin: 0 20px;
+            }
+            #status p {
+                color: grey;
+                padding: 14px 0;
+                margin: 0 20px;
+                border-bottom: 1px solid gainsboro;
+            }
+        .container-chat form input {
+            width: 100%;
+        }
+    .container-guide {
+        flex: 1 1 25%;
+        justify-content: center;
+    }
+        /*.list-groom {}*/
+        /*.list-nogroom {}*/
+.designed-by p {
+    position: sticky;
+    top: 100%;
+    justify-content: bottom right;
+}
+
+
+.btn.effect {
+    color: lightblue;
+}
+.btn.effect.effect::after,
+.btn.effect.effect::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20%; height: 20%;
+    border: 2px solid;
+    transition: all 0.6s ease;
+    border-radius: 2px;
+}
+.btn.effect.effect::after {
+    bottom: 0;
+    right: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: lightcoral;
+    border-right-color: lightcoral;
+}
+.btn.effect.effect::before {
+    top: 0;
+    left: 0;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: lightcoral;
+    border-left-color: lightcoral;
+}
