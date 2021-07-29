@@ -22,12 +22,12 @@ body {
         }
             #output p {
                 color: black;
-                padding: 14px 0;
+                padding: 8px 0;
                 margin: 0 20px;
             }
             #status p {
                 color: grey;
-                padding: 14px 0;
+                padding: 8px 0;
                 margin: 0 20px;
                 border-bottom: 1px solid gainsboro;
             }
@@ -45,8 +45,6 @@ body {
     top: 100%;
     justify-content: bottom right;
 }
-
-
 .btn.effect {
     color: lightblue;
 }

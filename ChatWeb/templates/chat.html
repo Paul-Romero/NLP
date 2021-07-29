@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="text-center">
-        <h1 class="m-2">Wanchi Telechat 🥴</h1>
+        <h1 class="m-2">🤖 Chat Room 🤖</h1>
     </div>
     <section class="container-chatroom">
         <div class="container-chat">
@@ -23,34 +23,36 @@
                 <div id="output"></div>
                 <div id="status"></div>
             </div>
-            <form class="row g-3">
+            <!--form class="row g-3"-->
+            <div class="row g-3">
                     <div class="col-10">
-                        <input type="text" class="form-control" name="message" placeholder="Escriba un mensaje...">
+                        <input type="text" class="form-control" name="message" id="message" placeholder="Escriba un mensaje...">
                     </div>
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-success mb-3">Enviar</button>
+                        <button type="submit" class="btn btn-success mb-3" id="send">Enviar</button>
                     </div>
-            </form>
+            </div>
+            <!--/form-->
         </div>
         <div class="container-guide">
             <div class="list-groom">
-                <strong>Groomer</strong>
+                <strong>Groomer text list</strong>
                 <ul>
-                    <li>Text</li>
-                    <li>Text</li>
-                    <li>Text</li>
-                    <li>Text</li>
-                    <li>Text</li>
+                    <li>I will love to feel your body</li>
+                    <li>Nice nipples</li>
+                    <li>Did you get any more pictures</li>
+                    <li>Only if you want</li>
+                    <li>What are you thinking of me?</li>
                 </ul>
             </div>
             <div class="list-nogroom">
-                <strong>No Groomer</strong>
+                <strong>Other text list</strong>
                 <ul>
-                    <li>Text</li>
-                    <li>Text</li>
-                    <li>Text</li>
-                    <li>Text</li>
-                    <li>Text</li>
+                    <li>I'm playing footbal</li>
+                    <li>We are going to visit the museum</li>
+                    <li>We will pass the semester</li>
+                    <li>Programming in python is cool</li>
+                    <li>Let's go to the Madrina's bar</li>
                 </ul>
             </div>
         </div>
@@ -58,15 +60,31 @@
     </div>
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- SOCKETIO
+    <!-- SOCKETIO -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js" integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        const socket = io.connect('http://127.0.0.1:5000');
-        socket.on('connect', function () {
-            socket.emit('message',{
-                username: "{{username}}"
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready( function() {
+            const socket = io();
+            const urlParams = new URLSearchParams(window.location.search);
+            const user = urlParams.get('username'); // Obtengo el nombre del usuario
+            $('#send').on('click', function() {
+                socket.emit('message', {username: user, message: $('#message').val()});
+                //socket.send($('#message').val()); // Envia el mensaje
+                $('#message').val(''); // Limpia el input
             });
-        })
-    </script-->
+            socket.on('message', function (data) {
+                status.innerHTML = '';
+                $('#output').append('<p><b>' + data.username + ':</b> ' + data.message + '</p>'); // Muestra el mensaje
+            });
+            let message = document.getElementById('message');
+            let status = document.getElementById('status');
+            message.addEventListener('keypress', function() { // Escucha si el usuario presiona alguna tecla
+                socket.emit('typing', user); // Envia el nombre del usuario a la funcion
+            });
+            socket.on('typing', function (user) { // Devuelve el nombre del usuario que esta escribiendo
+                status.innerHTML = '<p><em>'+user+'</em> está escribiendo</p>';
+            });
+        });
+    </script>
 </body>
 </html>
