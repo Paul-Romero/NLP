@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO
 from win10toast import ToastNotifier
-import joblib
+import joblib, time
 
 app = Flask(__name__) # Crea la app
 app.config['SECRET_KEY'] = 'mysecret' # Configura una contraseña
@@ -32,10 +32,14 @@ def handle_typing(user):
 
 @socketio.on('message')
 def handle_message(data):
-    socketio.emit('message', data) # Devuelve a todos los usuarios concetados el mensaje recivido
-    msg_prob = clf.predict_proba([data['message']]) # Ingresa el mensaje al clasificador
-    if msg_prob[0][1]*100 > 80: # Evalua para descartar falsos positivos
-        toast.show_toast("Alerta", "Se ha detectado contenido Grooming en el chat!", duration=4) # Muestra la alerta    
+    if data['message']:
+        socketio.emit('message', data) # Devuelve a todos los usuarios concetados el mensaje recivido
+        msg_prob = clf.predict_proba([data['message']]) # Ingresa el mensaje al clasificador
+        if msg_prob[0][1]*100 > 80: # Evalua para descartar falsos positivos
+            toast.show_toast("Alerta", "Se ha detectado contenido Grooming en el chat!", icon_path='D:/IDE/Anaconda/envs/ProjectNLP/Software/ChatWeb/static/alert.ico', duration=4) # Muestra la alerta
+            #toast.show_toast("Alerta", f"Se ha detectado contenido Grooming en el chat! \n Usuario: {data['user']} \n Registro de hora: {time.strftime('%H:%M:%S')}", icon_path='/static/alert.ico', duration=4) # Muestra la alerta
+            #print("Usuario: ", data['user'])
+            #print("Registro de hora: ", time.strftime('%H:%M:%S'))
 
 
 if __name__=='__main__':
